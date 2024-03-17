@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: ${DATASOURCE_URL:}
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:}
+  application:
+    name: movie-api
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+  flyway:
+    locations: classpath:db/migration
+    baselineOnMigrate: true
