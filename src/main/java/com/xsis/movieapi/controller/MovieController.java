@@ -41,8 +41,9 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.valueOf(response.getHttpStatus())).body(response);
     }
 
-    @PatchMapping
-    public ResponseEntity<Object> update(@Validated @RequestBody MovieUpdateRequest movieUpdateRequest) {
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Object> update(@Validated @PathVariable Integer id, @RequestBody MovieUpdateRequest movieUpdateRequest) {
+        movieUpdateRequest.setId(id);
         APIResponse<MovieDto> response = movieService.updateMovie(movieUpdateRequest);
         return ResponseEntity.status(HttpStatus.valueOf(response.getHttpStatus())).body(response);
     }
